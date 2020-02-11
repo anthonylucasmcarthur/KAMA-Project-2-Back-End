@@ -26,8 +26,9 @@ public class ParentServiceImpl implements ParentService {
 	TeacherRepo tr;
 	
 	public Parent loginParent(String username, String password) {
-		Parent p = pr.getParentByUsername(username);
+		dev.KAMA.entities.Parent p = pr.findByUsername(username);
 		if (p.getPassword().equals(password)) {
+			p.setChildren(pr.findByChildren);
 			return p;
 		}
 		return null;

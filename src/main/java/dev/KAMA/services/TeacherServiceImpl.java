@@ -27,8 +27,9 @@ public class TeacherServiceImpl implements TeacherService {
 	
 	
 	public Teacher loginTeacher(String username, String password) {
-		Teacher t = tr.getTeacherByUsername(username);
+		dev.KAMA.entities.Teacher t = tr.findByUsername(username);
 		if (t.getPassword().equals(password)) {
+			t.setReports(tr.findByReports);
 			return t;
 		}
 		return null;

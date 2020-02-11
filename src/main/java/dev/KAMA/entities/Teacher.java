@@ -80,6 +80,13 @@ public class Teacher {
 		this.lname = lname;
 	}
 
+	public Set<Report> getReports() {
+		return reports;
+	}
+
+	public void setReports(Set<Report> reports) {
+		this.reports = reports;
+	}
 
 	@Override
 	public String toString() {
