@@ -2,9 +2,9 @@ package dev.KAMA.services;
 
 import java.util.Set;
 
-import dev.kama.entities.Parent;
-import dev.kama.entities.Report;
-import dev.kama.entities.Showcase;
+import dev.KAMA.entities.Parent;
+import dev.KAMA.entities.Report;
+import dev.KAMA.entities.Showcase;
 
 public interface ParentService {
 

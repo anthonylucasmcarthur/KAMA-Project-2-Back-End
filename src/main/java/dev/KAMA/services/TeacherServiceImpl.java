@@ -4,10 +4,18 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import dev.kama.entities.Parent;
-import dev.kama.entities.Report;
-import dev.kama.entities.Showcase;
-import dev.kama.entities.Teacher;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import dev.KAMA.entities.Parent;
+import dev.KAMA.entities.Report;
+import dev.KAMA.entities.Showcase;
+import dev.KAMA.entities.Teacher;
+import dev.KAMA.repositories.ChildRepo;
+import dev.KAMA.repositories.ReportRepo;
+import dev.KAMA.repositories.ShowcaseRepo;
+import dev.KAMA.repositories.TeacherRepo;
 
 @Component
 @Service
@@ -25,9 +33,12 @@ public class TeacherServiceImpl implements TeacherService {
 	@Autowired
 	TeacherRepo tr;
 	
+	@Autowired
+	ChildRepo cr;
+	
 	
 	public Teacher loginTeacher(String username, String password) {
-		dev.KAMA.entities.Teacher t = tr.findByUsername(username);
+		Teacher t = tr.findByUsername(username);
 		if (t.getPassword().equals(password)) {
 			t.setReports(tr.findByReports);
 			return t;
@@ -36,8 +47,8 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	public Teacher submitReport(Teacher teacher, Report report) {
-		report.setTeacher(teacher.gettId());
-		report.setrId(rr.save(report));
+		report.setTeacher(teacher);
+		rr.save(report);
 		return teacher;
 	}
 
@@ -46,8 +57,8 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	public Teacher submitShowcase(Teacher teacher, Showcase showcase) {
-		showcase.setTeacher(teacher.gettId());
-		showcase.setsId(sr.save(showcase));
+		showcase.setTeacher(teacher);
+		sr.save(showcase);
 		return teacher;
 	}
 
