@@ -10,6 +10,7 @@ import dev.KAMA.entities.Parent;
 import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Showcase;
 import dev.KAMA.repositories.ChildRepo;
+import dev.KAMA.repositories.ParentRepo;
 import dev.KAMA.repositories.ReportRepo;
 import dev.KAMA.repositories.ShowcaseRepo;
 import dev.KAMA.repositories.TeacherRepo;
@@ -34,16 +35,16 @@ public class ParentServiceImpl implements ParentService {
 	ChildRepo cr;
 	
 	public Parent loginParent(String username, String password) {
-		Parent p = pr.findByUsername(username);
+		Parent p = pr.getParentByUsername(username);
 		if (p.getPassword().equals(password)) {
-			p.setChildren(pr.findByChildren);
+			p.setChildren(p.getChildren());
 			return p;
 		}
 		return null;
 	}
 
 	public Set<Report> viewReports(Parent parent) {
-		Set<Report> reports;
+		Set<Report> reports = rr.fin
 		
 		return null;
 	}

@@ -1,6 +1,5 @@
 package dev.KAMA.repositories;
 
-<<<<<<< HEAD
 import dev.KAMA.entities.Teacher;
 
 public interface TeacherRepo {

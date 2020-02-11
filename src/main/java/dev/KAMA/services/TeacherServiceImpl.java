@@ -13,6 +13,7 @@ import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Showcase;
 import dev.KAMA.entities.Teacher;
 import dev.KAMA.repositories.ChildRepo;
+import dev.KAMA.repositories.ParentRepo;
 import dev.KAMA.repositories.ReportRepo;
 import dev.KAMA.repositories.ShowcaseRepo;
 import dev.KAMA.repositories.TeacherRepo;
@@ -38,9 +39,9 @@ public class TeacherServiceImpl implements TeacherService {
 	
 	
 	public Teacher loginTeacher(String username, String password) {
-		Teacher t = tr.findByUsername(username);
+		Teacher t = tr.getTeacherByUsername(username);
 		if (t.getPassword().equals(password)) {
-			t.setReports(tr.findByReports);
+			t.setReports(t.getReports());
 			return t;
 		}
 		return null;
