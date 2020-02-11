@@ -7,7 +7,7 @@ public interface TeacherRepo {
 
 	Teacher getTeacherByUsername(String username);
 	
-=======
+
 import org.springframework.stereotype.Repository;
 
 import dev.KAMA.entities.Teacher;
@@ -16,5 +16,5 @@ import dev.KAMA.entities.Teacher;
 public interface TeacherRepo {
 
 	Teacher getTeacherByUsername(String username);
->>>>>>> Anthony
+
 }
