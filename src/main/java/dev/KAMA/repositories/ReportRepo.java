@@ -5,9 +5,11 @@ import java.sql.Date;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ReportRepo extends CrudRepository<Record,Integer> {
+import dev.KAMA.entities.Report;
 
-	Record getRecordByDate(Date date);
+@Repository
+public interface ReportRepo extends CrudRepository<Report,Integer> {
+
+	Report getRecordByDate(Date date);
 	
 }
