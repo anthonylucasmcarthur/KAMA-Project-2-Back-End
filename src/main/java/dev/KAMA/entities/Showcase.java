@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "showcase")
 public class Showcase {
@@ -30,10 +32,12 @@ public class Showcase {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "c_id")
+	@JsonIgnore
 	private Child child;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "t_id")
+	@JsonIgnore
 	private Teacher teacher;
 
 	public Showcase() {

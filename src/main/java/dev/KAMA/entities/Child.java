@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "child")
 public class Child {
@@ -31,6 +33,7 @@ public class Child {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "p_id")
+	@JsonIgnore
 	private Parent parent;
 	
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
