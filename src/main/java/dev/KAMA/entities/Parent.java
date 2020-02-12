@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "parent")
 public class Parent {
@@ -34,6 +36,7 @@ public class Parent {
 	private String lname;
 
 	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Child> children = new HashSet<Child>();
 	
 	

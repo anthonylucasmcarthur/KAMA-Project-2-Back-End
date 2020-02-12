@@ -32,10 +32,12 @@ public class Showcase {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "c_id")
+	@JsonIgnore
 	private Child child;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "t_id")
+	@JsonIgnore
 	private Teacher teacher;
 
 	public Showcase() {
