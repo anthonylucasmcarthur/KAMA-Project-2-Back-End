@@ -15,5 +15,4 @@ public interface ChildRepo extends CrudRepository<Child,Integer> {
 	
 	List<Child> findByReports(Report report);
 
-	Set<Child> getAllChild();
 }
