@@ -35,7 +35,7 @@ public class Parent {
 	@Column(name = "lname")
 	private String lname;
 
-	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<Child> children = new HashSet<Child>();
 	
