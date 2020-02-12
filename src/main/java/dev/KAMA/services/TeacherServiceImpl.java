@@ -44,7 +44,8 @@ public class TeacherServiceImpl implements TeacherService {
 	public Teacher loginTeacher(String username, String password) {
 		Teacher t = tr.findByUsername(username);
 		if (t.getPassword().equals(password)) {
-			t.setReports(t.getReports());
+			t.setReports(this.viewAllReports(t));
+			t.setShowcases(this.viewAllShowcases(t));
 			return t;
 		}
 		return null;
