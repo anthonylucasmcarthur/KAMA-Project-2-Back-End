@@ -22,5 +22,9 @@ public interface TeacherService {
 	public Set<Showcase> viewAllShowcases();
 	
 	public Set<Child> findAllChildren();
+	
+	public Set<Report> findReportsForChild(Child child);
+	
+	public Set<Showcase> findShowcasesForChild(Child child);
 }
 

@@ -76,4 +76,14 @@ public class TeacherServiceImpl implements TeacherService {
 		return children;
 	}
 
+	@Override
+	public Set<Report> findReportsForChild(Child child) {
+		return child.getReports();
+	}
+
+	@Override
+	public Set<Showcase> findShowcasesForChild(Child child) {
+		return child.getShowcases();
+	}
+
 }
