@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import dev.KAMA.entities.Parent;
 import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Showcase;
 import dev.KAMA.entities.Teacher;
@@ -29,17 +28,17 @@ public class TeacherServiceImpl implements TeacherService {
 	ReportRepo rr;
 	
 	@Autowired
-	ShowcaseRepo sr;
+	TeacherRepo tr;
 	
 	@Autowired
-	TeacherRepo tr;
+	ShowcaseRepo sr;
 	
 	@Autowired
 	ChildRepo cr;
 	
 	
 	public Teacher loginTeacher(String username, String password) {
-		Teacher t = tr.getTeacherByUsername(username);
+		Teacher t = tr.findByUsername(username);
 		if (t.getPassword().equals(password)) {
 			t.setReports(t.getReports());
 			return t;

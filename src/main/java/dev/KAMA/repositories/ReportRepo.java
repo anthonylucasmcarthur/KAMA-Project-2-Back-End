@@ -13,7 +13,7 @@ public interface ReportRepo extends CrudRepository<Report,Integer> {
 
 	Report getRecordByDate(Date date);
 
-	Set<Report> findAllById(int id);
+	Set<Report> findAllByrId(int rId);
 	Set<Report> findAll();
 
 	

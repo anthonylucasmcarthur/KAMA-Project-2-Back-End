@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Parent;
 import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Showcase;
@@ -35,7 +36,7 @@ public class ParentServiceImpl implements ParentService {
 	ChildRepo cr;
 	
 	public Parent loginParent(String username, String password) {
-		Parent p = pr.getParentByUsername(username);
+		Parent p = pr.findByUsername(username);
 		if (p.getPassword().equals(password)) {
 			p.setChildren(p.getChildren());
 			return p;
@@ -43,15 +44,18 @@ public class ParentServiceImpl implements ParentService {
 		return null;
 	}
 
-	public Set<Report> viewReports(Parent parent) {
-		Set<Report> reports = rr.fin
-		
+	public Set<Report> viewReports(Parent parent, Child child) {
+		if (child.getParent().equals(parent)) {
+			return rr.findAll();
+		}
 		return null;
 	}
 
-	public Set<Showcase> viewShowcase(Parent parent) {
-		Set<Showcase> showcases = sr.findAllById(parent.getpId());
-		return showcases;
+	public Set<Showcase> viewShowcase(Parent parent, Child child) {
+		if (child.getParent().equals(parent)) {
+			return sr.findAll();
+		}
+		return null;
 	}
 
 }

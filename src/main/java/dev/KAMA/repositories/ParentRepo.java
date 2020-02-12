@@ -11,7 +11,7 @@ import dev.KAMA.entities.Parent;
 @Repository
 public interface ParentRepo extends CrudRepository<Parent,Integer>  {
 	
-	Parent getParentByUsername(String username);
-	Parent findByChildren(Child child);
+	Parent findByUsername(String username);
+	//Parent findByChildren(Child child);
 
 }
