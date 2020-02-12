@@ -68,6 +68,6 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	public Set<Child> getAllChildren() {
-		return new HashSet<Child>((Collection<? extends Child>) this.cr.findAll());
+		return cr.getAllChild();
 	}
 }
