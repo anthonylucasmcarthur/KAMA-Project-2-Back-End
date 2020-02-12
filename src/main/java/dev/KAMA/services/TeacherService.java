@@ -3,6 +3,7 @@ package dev.KAMA.services;
 
 import java.util.Set;
 
+import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Showcase;
 import dev.KAMA.entities.Teacher;
@@ -18,4 +19,6 @@ public interface TeacherService {
 	public Teacher submitShowcase(Teacher teacher, Showcase showcase);
 	
 	public Set<Showcase> viewAllShowcases();
+	
+	public Set<Child> getAllChildren();
 }

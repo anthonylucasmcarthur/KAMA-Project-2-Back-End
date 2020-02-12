@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Showcase;
 import dev.KAMA.entities.Teacher;
@@ -66,4 +67,7 @@ public class TeacherServiceImpl implements TeacherService {
 		return new HashSet<Showcase>((Collection<? extends Showcase>) this.sr.findAll());
 	}
 
+	public Set<Child> getAllChildren() {
+		return new HashSet<Child>((Collection<? extends Child>) this.cr.findAll());
+	}
 }
