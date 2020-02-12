@@ -29,7 +29,7 @@ public class TeacherController {
 		
 	@RequestMapping(value = "/teacher", method = RequestMethod.POST)
 	@ResponseBody
-	public Teacher loginTeacher(Teacher teacher) {
+	public Teacher loginTeacher(@RequestBody Teacher teacher) {
 		Teacher t = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
 		return t;
 	}
