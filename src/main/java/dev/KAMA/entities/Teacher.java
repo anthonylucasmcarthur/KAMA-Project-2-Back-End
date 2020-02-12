@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "teacher")
 public class Teacher {
@@ -34,6 +36,7 @@ public class Teacher {
 	private String lname;
 
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private Set<Report> reports = new HashSet<Report>();
 	
 	public Teacher() {

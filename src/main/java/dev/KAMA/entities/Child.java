@@ -14,12 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "child")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Child {
 
 	@Id
@@ -35,12 +35,15 @@ public class Child {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "p_id")
+	@JsonBackReference
 	private Parent parent;
 	
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
+	@JsonBackReference
 	private Set<Report> reports = new HashSet<Report>();
 	
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
+	@JsonBackReference
 	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 

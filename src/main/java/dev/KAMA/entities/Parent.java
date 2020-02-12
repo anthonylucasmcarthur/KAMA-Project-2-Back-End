@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "parent")
@@ -36,6 +38,7 @@ public class Parent {
 	private String lname;
 
 	@OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private Set<Child> children = new HashSet<Child>();
 	
 	
