@@ -2,7 +2,10 @@ package dev.KAMA.services;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -67,7 +70,10 @@ public class TeacherServiceImpl implements TeacherService {
 		return new HashSet<Showcase>((Collection<? extends Showcase>) this.sr.findAll());
 	}
 
-	public Set<Child> getAllChildren() {
-		return cr.getAllChild();
+
+	public Set<Child> findAllChildren() {
+		Set<Child> children = new HashSet<Child>((Collection<? extends Child>) this.cr.findAll());
+		return children;
 	}
+
 }

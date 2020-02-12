@@ -33,7 +33,7 @@ public class Parent {
 	@Column(name = "lname")
 	private String lname;
 
-	@OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
 	private Set<Child> children = new HashSet<Child>();
 	
 	

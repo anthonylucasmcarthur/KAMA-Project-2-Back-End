@@ -1,6 +1,7 @@
 package dev.KAMA.services;
 
 
+import java.util.List;
 import java.util.Set;
 
 import dev.KAMA.entities.Child;
@@ -20,5 +21,6 @@ public interface TeacherService {
 	
 	public Set<Showcase> viewAllShowcases();
 	
-	public Set<Child> getAllChildren();
+	public Set<Child> findAllChildren();
 }
+

@@ -36,7 +36,7 @@ public class TeacherController {
 	@RequestMapping(value = "/children", method = RequestMethod.GET)
 	@ResponseBody
 	public Set<Child> getChildren(){
-		return ts.getAllChildren();
+		return ts.findAllChildren();
 	}
 	
 }

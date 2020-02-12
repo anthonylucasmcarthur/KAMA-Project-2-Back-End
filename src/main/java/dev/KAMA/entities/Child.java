@@ -29,14 +29,14 @@ public class Child {
 	@Column(name = "lname")
 	private String lname;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "p_id")
 	private Parent parent;
 	
-	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
 	private Set<Report> reports = new HashSet<Report>();
 	
-	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
 	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 
