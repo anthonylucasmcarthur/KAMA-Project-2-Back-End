@@ -15,8 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "child")
@@ -33,17 +36,15 @@ public class Child {
 	@Column(name = "lname")
 	private String lname;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "p_id")
-	@JsonBackReference
 	private Parent parent;
 	
-	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
-	@JsonBackReference
+	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
 	private Set<Report> reports = new HashSet<Report>();
 	
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
-	@JsonBackReference
+	@JsonIgnore
 	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 
@@ -82,7 +83,7 @@ public class Child {
 	public void setParent(Parent parent) {
 		this.parent = parent;
 	}
-
+	
 	public Set<Report> getReports() {
 		return reports;
 	}

@@ -11,8 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "report")
@@ -34,12 +36,12 @@ public class Report {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "c_id")
-	@JsonManagedReference
+	@JsonIgnore
 	private Child child;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "t_id")
-	@JsonManagedReference
+	@JsonIgnore
 	private Teacher teacher;
 
 	public Report() {
@@ -85,7 +87,7 @@ public class Report {
 	public void setChild(Child child) {
 		this.child = child;
 	}
-
+	
 	public Teacher getTeacher() {
 		return teacher;
 	}
