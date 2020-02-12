@@ -37,9 +37,11 @@ public class Child {
 	private Parent parent;
 	
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Report> reports = new HashSet<Report>();
 	
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 
