@@ -1,5 +1,6 @@
 package dev.KAMA.services;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,18 +45,22 @@ public class ParentServiceImpl implements ParentService {
 		return null;
 	}
 
-	public Set<Report> viewReports(Parent parent, Child child) {
-		if (child.getParent().equals(parent)) {
-			return rr.findAll();
+	public Set<Report> viewReports(Parent parent) {
+		Set<Child> children = parent.getChildren();
+		Set<Report> reports = new HashSet<Report>();
+		for (Child child : children) {
+			reports.addAll(child.getReports());
 		}
-		return null;
+		return reports;
 	}
 
-	public Set<Showcase> viewShowcase(Parent parent, Child child) {
-		if (child.getParent().equals(parent)) {
-			return sr.findAll();
+	public Set<Showcase> viewShowcase(Parent parent) {
+		Set<Child> children = parent.getChildren();
+		Set<Showcase> showcases = new HashSet<Showcase>();
+		for (Child child : children) {
+			showcases.addAll(child.getShowcases());
 		}
-		return null;
+		return showcases;
 	}
 
 }

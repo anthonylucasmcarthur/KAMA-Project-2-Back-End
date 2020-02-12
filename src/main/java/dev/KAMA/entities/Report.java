@@ -90,8 +90,9 @@ public class Report {
 
 	@Override
 	public String toString() {
-		return "Report [rId=" + rId + ", status=" + status + ", comment=" + comment + ", date=" + date + "]";
+		return "Report [rId=" + rId + ", status=" + status + ", comment=" + comment + ", date=" + date+ "]";
 	}
+
 	
 	
 }

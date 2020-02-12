@@ -10,7 +10,7 @@ import dev.KAMA.entities.Showcase;
 public interface ParentService {
 
 	Parent loginParent(String username, String password);
-	Set<Report> viewReports(Parent parent, Child child);
-	Set<Showcase> viewShowcase(Parent parent, Child child);
+	Set<Report> viewReports(Parent parent);
+	Set<Showcase> viewShowcase(Parent parent);
 	
 }

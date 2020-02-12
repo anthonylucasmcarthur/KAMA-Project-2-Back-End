@@ -94,6 +94,4 @@ public class Parent {
 		return "Parent [pId=" + pId + ", username=" + username + ", password=" + password + ", fname=" + fname
 				+ ", lname=" + lname + "]";
 	}
-	
-	
 }

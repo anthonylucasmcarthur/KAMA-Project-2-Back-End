@@ -36,6 +36,9 @@ public class Child {
 	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
 	private Set<Report> reports = new HashSet<Report>();
 	
+	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
+	private Set<Showcase> showcases = new HashSet<Showcase>();
+	
 
 	public Child() {
 		super();
@@ -73,10 +76,28 @@ public class Child {
 		this.parent = parent;
 	}
 
+	public Set<Report> getReports() {
+		return reports;
+	}
+
+	public void setReports(Set<Report> reports) {
+		this.reports = reports;
+	}
+
+	public Set<Showcase> getShowcases() {
+		return showcases;
+	}
+
+	public void setShowcases(Set<Showcase> showcases) {
+		this.showcases = showcases;
+	}
+
 	@Override
 	public String toString() {
 		return "Child [cId=" + cId + ", fname=" + fname + ", lname=" + lname + "]";
 	}
+
+	
 	
 	
 	
