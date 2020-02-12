@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dev.KAMA.entities.Child;
+import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Teacher;
 import dev.KAMA.services.ParentService;
 import dev.KAMA.services.TeacherService;
@@ -25,12 +26,12 @@ public class TeacherController {
 	
 	@Autowired
 	ParentService ps;
-	
-	@RequestMapping(value = "/teacher", method = RequestMethod.GET)
+		
+	@RequestMapping(value = "/teacher", method = RequestMethod.POST)
 	@ResponseBody
-	public Teacher getTeacher(HttpServletRequest request) {
-		Teacher teacher = (Teacher) request.getSession().getAttribute("User");
-		return teacher;
+	public Teacher loginTeacher(Teacher teacher) {
+		Teacher t = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
+		return t;
 	}
 	
 	@RequestMapping(value = "/children", method = RequestMethod.GET)
@@ -39,4 +40,10 @@ public class TeacherController {
 		return ts.findAllChildren();
 	}
 	
+	@RequestMapping(value = "/reports", method = RequestMethod.POST)
+	@ResponseBody
+	public Set<Report> createReport(Report report){
+		ts.submitReport(report.getTeacher(), report);
+		return ts.viewAllReports();
+	}
 }
