@@ -40,7 +40,8 @@ public class Child {
 	@JoinColumn(name = "p_id")
 	private Parent parent;
 	
-	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Report> reports = new HashSet<Report>();
 	
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
