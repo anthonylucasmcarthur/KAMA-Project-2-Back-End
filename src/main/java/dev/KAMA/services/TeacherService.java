@@ -17,9 +17,13 @@ public interface TeacherService {
 	
 	public Set<Report> viewAllReports();
 	
+	public Set<Report> viewAllReports(Teacher teacher);
+	
 	public Teacher submitShowcase(Teacher teacher, Showcase showcase);
 	
 	public Set<Showcase> viewAllShowcases();
+	
+	public Set<Showcase> viewAllShowcases(Teacher teacher);
 	
 	public Set<Child> findAllChildren();
 	

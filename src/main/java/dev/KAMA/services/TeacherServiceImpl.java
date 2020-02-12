@@ -59,6 +59,11 @@ public class TeacherServiceImpl implements TeacherService {
 	public Set<Report> viewAllReports() {
 		return new HashSet<Report>((Collection<? extends Report>) this.rr.findAll());
 	}
+	
+	@Override
+	public Set<Report> viewAllReports(Teacher teacher) {
+		return teacher.getReports();
+	}
 
 	public Teacher submitShowcase(Teacher teacher, Showcase showcase) {
 		showcase.setTeacher(teacher);
@@ -69,7 +74,11 @@ public class TeacherServiceImpl implements TeacherService {
 	public Set<Showcase> viewAllShowcases() {
 		return new HashSet<Showcase>((Collection<? extends Showcase>) this.sr.findAll());
 	}
-
+	
+	@Override
+	public Set<Showcase> viewAllShowcases(Teacher teacher) {
+		return teacher.getShowcases();
+	}
 
 	public Set<Child> findAllChildren() {
 		Set<Child> children = new HashSet<Child>((Collection<? extends Child>) this.cr.findAll());

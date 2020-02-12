@@ -12,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "teacher")
@@ -36,8 +39,10 @@ public class Teacher {
 	private String lname;
 
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-	@JsonManagedReference
 	private Set<Report> reports = new HashSet<Report>();
+	
+	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
+	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 	public Teacher() {
 		super();
@@ -85,6 +90,14 @@ public class Teacher {
 
 	public Set<Report> getReports() {
 		return reports;
+	}
+
+	public Set<Showcase> getShowcases() {
+		return showcases;
+	}
+
+	public void setShowcases(Set<Showcase> showcases) {
+		this.showcases = showcases;
 	}
 
 	public void setReports(Set<Report> reports) {
