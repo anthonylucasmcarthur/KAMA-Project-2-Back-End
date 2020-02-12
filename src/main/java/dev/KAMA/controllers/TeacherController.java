@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,7 @@ public class TeacherController {
 	ParentService ps;
 		
 	@RequestMapping(value = "/teacher", method = RequestMethod.POST)
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@ResponseBody
 	public Teacher loginTeacher(@RequestBody Teacher teacher) {
 		Teacher t = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
@@ -36,12 +38,14 @@ public class TeacherController {
 	}
 	
 	@RequestMapping(value = "/children", method = RequestMethod.GET)
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@ResponseBody
 	public Set<Child> getChildren(){
 		return ts.findAllChildren();
 	}
 	
 	@RequestMapping(value = "/reports", method = RequestMethod.POST)
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@ResponseBody
 	public Set<Report> createReport(Report report){
 		ts.submitReport(report.getTeacher(), report);
