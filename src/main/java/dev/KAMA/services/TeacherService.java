@@ -15,6 +15,8 @@ public interface TeacherService {
 	
 	public Report submitReport(Report report);
 	
+	public Teacher getTeacherById(int id);
+	
 	public Set<Report> viewAllReports();
 	
 	public Set<Report> viewAllReports(Teacher teacher);

@@ -48,6 +48,10 @@ public class TeacherServiceImpl implements TeacherService {
 		}
 		return null;
 	}
+	
+	public Teacher getTeacherById(int id) {
+		return this.tr.findById(id).get();
+	}
 
 	public Report submitReport(Report report) {
 		rr.save(report);
