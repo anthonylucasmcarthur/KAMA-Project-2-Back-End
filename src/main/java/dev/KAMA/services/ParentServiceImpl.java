@@ -23,26 +23,30 @@ public class ParentServiceImpl implements ParentService {
 
 	@Autowired
 	ParentRepo pr;
-	
+
 	@Autowired
 	ReportRepo rr;
-	
+
 	@Autowired
 	ShowcaseRepo sr;
-	
+
 	@Autowired
 	TeacherRepo tr;
-	
+
 	@Autowired
 	ChildRepo cr;
-	
+
 	public Parent loginParent(String username, String password) {
 		Parent p = pr.findByUsername(username);
 		if (p.getPassword().equals(password)) {
-			p.setChildren(p.getChildren());
+			p.setChildren(this.viewChildren(p));
 			return p;
 		}
 		return null;
+	}
+
+	public Set<Child> viewChildren(Parent parent) {
+		return parent.getChildren();
 	}
 
 	public Set<Report> viewReports(Parent parent) {

@@ -6,7 +6,9 @@ import java.util.Set;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Report;
+import dev.KAMA.entities.Teacher;
 
 @Repository
 public interface ReportRepo extends CrudRepository<Report,Integer> {
@@ -15,6 +17,8 @@ public interface ReportRepo extends CrudRepository<Report,Integer> {
 
 	Set<Report> findAllByrId(int rId);
 	Set<Report> findAll();
+	Set<Report> findByChild(Child child);
+	Set<Report> findByTeacher(Teacher teacher);
 
 	
 }

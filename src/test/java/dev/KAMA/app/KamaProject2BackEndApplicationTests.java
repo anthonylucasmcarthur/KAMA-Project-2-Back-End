@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Report;
+import dev.KAMA.entities.Teacher;
 import dev.KAMA.repositories.ChildRepo;
 import dev.KAMA.repositories.ParentRepo;
 import dev.KAMA.repositories.ReportRepo;
@@ -39,9 +41,15 @@ class KamaProject2BackEndApplicationTests {
 	}
 	
 	@Test
-	void findAllChild() {     
-		System.out.println(pr.findByUsername("ablack"));
-		System.out.println(ts.findAllChildren());
+	void findAllChild() {
+		Child c = new Child();
+		Teacher t = new Teacher();
+		t = tr.findById(2).get();
+		c = cr.findById(8).get();
+		//System.out.println(c.getReports());
+		//System.out.println(rr.findByChild(c));
+		System.out.println(rr.findByTeacher(t));
+		//System.out.println(sr.findAll());
 	}
 
 }

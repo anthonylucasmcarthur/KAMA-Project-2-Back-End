@@ -62,7 +62,7 @@ public class TeacherServiceImpl implements TeacherService {
 	
 	@Override
 	public Set<Report> viewAllReports(Teacher teacher) {
-		return teacher.getReports();
+		return rr.findByTeacher(teacher);
 	}
 
 	public Showcase submitShowcase(Showcase showcase) {
@@ -76,7 +76,7 @@ public class TeacherServiceImpl implements TeacherService {
 	
 	@Override
 	public Set<Showcase> viewAllShowcases(Teacher teacher) {
-		return teacher.getShowcases();
+		return sr.findByTeacher(teacher);
 	}
 
 	public Set<Child> findAllChildren() {
@@ -86,12 +86,12 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Override
 	public Set<Report> findReportsForChild(Child child) {
-		return child.getReports();
+		return rr.findByChild(child);
 	}
 
 	@Override
 	public Set<Showcase> findShowcasesForChild(Child child) {
-		return child.getShowcases();
+		return sr.findByChild(child);
 	}
 
 }

@@ -19,6 +19,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "report")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+property = "r_id")
 public class Report {
 	
 	@Id
@@ -35,12 +37,14 @@ public class Report {
 	@Column(name = "report_date")
 	private long date = System.currentTimeMillis();
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "c_id")
+//	@JsonManagedReference
 	private Child child;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "t_id")
+//	@JsonManagedReference 
 	private Teacher teacher;
 
 	public Report() {

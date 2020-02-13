@@ -3,6 +3,7 @@ package dev.KAMA.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,6 +24,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "child")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+property = "c_id")
 public class Child {
 
 	@Id
@@ -36,16 +39,18 @@ public class Child {
 	@Column(name = "lname")
 	private String lname;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "p_id")
+//	@JsonIgnore
 	private Parent parent;
 	
+
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@JsonBackReference
 	private Set<Report> reports = new HashSet<Report>();
 	
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@JsonBackReference
 	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 

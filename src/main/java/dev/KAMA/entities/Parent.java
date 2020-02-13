@@ -21,6 +21,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "parent")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+property = "p_id")
 public class Parent {
 
 	@Id
@@ -41,7 +43,6 @@ public class Parent {
 	private String lname;
 
 	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
-	@JsonIgnore
 	private Set<Child> children = new HashSet<Child>();
 	
 	

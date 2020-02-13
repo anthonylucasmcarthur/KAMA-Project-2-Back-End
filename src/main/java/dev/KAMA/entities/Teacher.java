@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -20,6 +21,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "teacher")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+property = "t_id")
 public class Teacher {
 	
 	@Id
@@ -40,11 +43,11 @@ public class Teacher {
 	private String lname;
 
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@JsonBackReference
 	private Set<Report> reports = new HashSet<Report>();
 	
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@JsonBackReference
 	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 	public Teacher() {
