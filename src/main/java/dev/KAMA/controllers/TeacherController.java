@@ -49,6 +49,8 @@ public class TeacherController {
 	@CrossOrigin(origins = {"http://localhost:4200"})
 	@ResponseBody
 	public Report createReport(@RequestBody Report report){
+		System.out.println(report.getChild());
+		System.out.println(report.getTeacher());
 		return  ts.submitReport(report);
 	}
 	

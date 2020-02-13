@@ -98,7 +98,10 @@ public class Showcase {
 
 	@Override
 	public String toString() {
-		return "Showcase [cwId=" + cwId + ", link=" + link + ", comment=" + comment + ", date=" + date + "]";
+		return "Showcase [cwId=" + cwId + ", link=" + link + ", comment=" + comment + ", date=" + date + ", child="
+				+ child + ", teacher=" + teacher + "]";
 	}
+
+	
 
 }

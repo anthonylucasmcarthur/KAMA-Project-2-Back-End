@@ -13,13 +13,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "report")
-
+@JsonIgnoreProperties(value= {"child", "teacher"}, allowSetters=true)
 public class Report {
 	
 	@Id
@@ -36,14 +36,12 @@ public class Report {
 	@Column(name = "report_date")
 	private long date = System.currentTimeMillis();
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "c_id")
-	@JsonIgnore
 	private Child child;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "t_id")
-	@JsonIgnore
 	private Teacher teacher;
 
 	public Report() {
@@ -100,8 +98,11 @@ public class Report {
 
 	@Override
 	public String toString() {
-		return "Report [rId=" + rId + ", status=" + status + ", comment=" + comment + ", date=" + date+ "]";
+		return "Report [rId=" + rId + ", status=" + status + ", comment=" + comment + ", date=" + date + ", child="
+				+ child + ", teacher=" + teacher + "]";
 	}
+
+	
 
 	
 	

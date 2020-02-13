@@ -54,7 +54,7 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	public Report submitReport(Report report) {
-		rr.save(report);
+		report = rr.save(report);
 		return report;
 	}
 

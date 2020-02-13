@@ -39,7 +39,7 @@ public class Child {
 	@Column(name = "lname")
 	private String lname;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "p_id")
 	@JsonIgnore
 	private Parent parent;
@@ -108,8 +108,10 @@ public class Child {
 
 	@Override
 	public String toString() {
-		return "Child [cId=" + cId + ", fname=" + fname + ", lname=" + lname + "]";
+		return "Child [cId=" + cId + ", fname=" + fname + ", lname=" + lname + ", parent=" + parent + "]";
 	}
+
+	
 
 	
 	

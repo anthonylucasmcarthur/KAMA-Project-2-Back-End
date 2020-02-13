@@ -65,23 +65,28 @@ class KamaProject2BackEndApplicationTests {
  void submitReport() {
   Report r = new Report();
   Teacher t = tr.findByUsername("cgreen");
+  Child c = cr.findById(1).get();
   
+  r.setChild(c);
   r.setStatus("Bad");
   r.setComment("pushed kid off swing");
- 
- 
-  ts.submitReport(t, r);
+  r.setTeacher(t);
+  System.out.println(r.getTeacher());
+  System.out.println(r.getChild());
+  ts.submitReport(r);
+  System.out.println(r);
+  System.out.println(r.getrId());
  }
  @Test
  void submitShowcase() {
-  Showcase sc = new Showcase();
-  Teacher t = tr.findByUsername("cgreen");
-  Child c = new Child();
-  c.setcId(1);
-  sc.setLink("https://www.google.com/");
-  sc.setComment("he did good");
-  sc.setChild(c);
-  ts.submitShowcase(t, sc);
+//  //Showcase sc = new Showcase();
+//  Teacher t = tr.findByUsername("cgreen");
+//  Child c = new Child();
+//  c.setcId(1);
+//  sc.setLink("https://www.google.com/");
+//  sc.setComment("he did good");
+//  sc.setChild(c);
+//  ts.submitShowcase(t, sc);
  }
  
  // test for the parent
