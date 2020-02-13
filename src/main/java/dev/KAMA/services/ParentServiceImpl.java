@@ -39,7 +39,6 @@ public class ParentServiceImpl implements ParentService {
 	public Parent loginParent(String username, String password) {
 		Parent p = pr.findByUsername(username);
 		if (p.getPassword().equals(password)) {
-			p.setChildren(this.viewChildren(p));
 			return p;
 		}
 		return null;

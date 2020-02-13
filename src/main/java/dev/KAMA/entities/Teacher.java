@@ -21,8 +21,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "teacher")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-property = "t_id")
 public class Teacher {
 	
 	@Id
@@ -43,11 +41,11 @@ public class Teacher {
 	private String lname;
 
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-//	@JsonBackReference
+	@JsonIgnore
 	private Set<Report> reports = new HashSet<Report>();
 	
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-//	@JsonBackReference
+	@JsonIgnore
 	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 	public Teacher() {

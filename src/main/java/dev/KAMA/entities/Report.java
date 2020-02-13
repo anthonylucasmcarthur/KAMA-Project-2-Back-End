@@ -19,8 +19,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "report")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-property = "r_id")
+
 public class Report {
 	
 	@Id
@@ -39,12 +38,12 @@ public class Report {
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "c_id")
-//	@JsonManagedReference
+	@JsonIgnore
 	private Child child;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "t_id")
-//	@JsonManagedReference 
+	@JsonIgnore
 	private Teacher teacher;
 
 	public Report() {
