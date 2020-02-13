@@ -47,8 +47,7 @@ public class TeacherController {
 	@RequestMapping(value = "/reports", method = RequestMethod.POST)
 	@CrossOrigin(origins = {"http://localhost:4200"})
 	@ResponseBody
-	public Set<Report> createReport(Report report){
-		ts.submitReport(report.getTeacher(), report);
-		return ts.viewAllReports();
+	public Report createReport(@RequestBody Report report){
+		return  ts.submitReport(report);
 	}
 }

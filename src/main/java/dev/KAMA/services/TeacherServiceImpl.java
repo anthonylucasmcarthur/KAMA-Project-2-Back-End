@@ -51,10 +51,9 @@ public class TeacherServiceImpl implements TeacherService {
 		return null;
 	}
 
-	public Teacher submitReport(Teacher teacher, Report report) {
-		report.setTeacher(teacher);
+	public Report submitReport(Report report) {
 		rr.save(report);
-		return teacher;
+		return report;
 	}
 
 	public Set<Report> viewAllReports() {
@@ -66,10 +65,9 @@ public class TeacherServiceImpl implements TeacherService {
 		return teacher.getReports();
 	}
 
-	public Teacher submitShowcase(Teacher teacher, Showcase showcase) {
-		showcase.setTeacher(teacher);
+	public Showcase submitShowcase(Showcase showcase) {
 		sr.save(showcase);
-		return teacher;
+		return showcase;
 	}
 
 	public Set<Showcase> viewAllShowcases() {

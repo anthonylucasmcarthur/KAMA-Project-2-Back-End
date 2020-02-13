@@ -13,13 +13,13 @@ public interface TeacherService {
 
 	public Teacher loginTeacher(String username, String password);
 	
-	public Teacher submitReport(Teacher teacher, Report report);
+	public Report submitReport(Report report);
 	
 	public Set<Report> viewAllReports();
 	
 	public Set<Report> viewAllReports(Teacher teacher);
 	
-	public Teacher submitShowcase(Teacher teacher, Showcase showcase);
+	public Showcase submitShowcase(Showcase showcase);
 	
 	public Set<Showcase> viewAllShowcases();
 	
