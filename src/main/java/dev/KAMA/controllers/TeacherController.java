@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dev.KAMA.entities.Child;
+import dev.KAMA.entities.Parent;
 import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Teacher;
 import dev.KAMA.services.ParentService;
@@ -49,5 +50,13 @@ public class TeacherController {
 	@ResponseBody
 	public Report createReport(@RequestBody Report report){
 		return  ts.submitReport(report);
+	}
+	
+	@RequestMapping(value = "/parent", method = RequestMethod.POST)
+	@CrossOrigin(origins = {"http://localhost:4200"})
+	@ResponseBody
+	public Parent loginParent(@RequestBody Parent parent) {
+		Parent p = ps.loginParent(parent.getUsername(), parent.getPassword());
+		return p;
 	}
 }
