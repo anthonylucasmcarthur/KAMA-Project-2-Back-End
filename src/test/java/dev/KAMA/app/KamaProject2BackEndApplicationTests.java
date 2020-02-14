@@ -12,7 +12,7 @@ import dev.KAMA.entities.Teacher;
 import dev.KAMA.repositories.ChildRepo;
 import dev.KAMA.repositories.ParentRepo;
 import dev.KAMA.repositories.ReportRepo;
-import dev.KAMA.repositories.ShowcaseRepo;
+//import dev.KAMA.repositories.ShowcaseRepo;
 import dev.KAMA.repositories.TeacherRepo;
 import dev.KAMA.services.TeacherService;
 
@@ -28,9 +28,9 @@ class KamaProject2BackEndApplicationTests {
 	@Autowired
 	TeacherRepo tr;
 	
-	@Autowired
-	ShowcaseRepo sr;
-	
+//	@Autowired
+//	ShowcaseRepo sr;
+//	
 	@Autowired
 	ChildRepo cr;
 	
@@ -61,11 +61,11 @@ class KamaProject2BackEndApplicationTests {
 	 }
  }
  // this works
- @Test
- void viewAllShowcases(){
-  System.out.println(ts.viewAllShowcases());
- }
- 
+// @Test
+// void viewAllShowcases(){
+//  System.out.println(ts.viewAllShowcases());
+// }
+// 
  
  // works
  @Test

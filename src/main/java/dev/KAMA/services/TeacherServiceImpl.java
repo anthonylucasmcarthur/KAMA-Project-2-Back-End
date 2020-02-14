@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 
 import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Report;
-import dev.KAMA.entities.Showcase;
+//import dev.KAMA.entities.Showcase;
 import dev.KAMA.entities.Teacher;
 import dev.KAMA.repositories.ChildRepo;
 import dev.KAMA.repositories.ParentRepo;
 import dev.KAMA.repositories.ReportRepo;
-import dev.KAMA.repositories.ShowcaseRepo;
+//import dev.KAMA.repositories.ShowcaseRepo;
 import dev.KAMA.repositories.TeacherRepo;
 
 @Component
@@ -34,8 +34,8 @@ public class TeacherServiceImpl implements TeacherService {
 	@Autowired
 	TeacherRepo tr;
 	
-	@Autowired
-	ShowcaseRepo sr;
+//	@Autowired
+//	ShowcaseRepo sr;
 	
 	@Autowired
 	ChildRepo cr;
@@ -67,19 +67,19 @@ public class TeacherServiceImpl implements TeacherService {
 		return rr.findByTeacher(teacher);
 	}
 
-	public Showcase submitShowcase(Showcase showcase) {
-		sr.save(showcase);
-		return showcase;
-	}
-
-	public Set<Showcase> viewAllShowcases() {
-		return new HashSet<Showcase>((Collection<? extends Showcase>) this.sr.findAll());
-	}
-	
-	@Override
-	public Set<Showcase> viewAllShowcases(Teacher teacher) {
-		return sr.findByTeacher(teacher);
-	}
+//	public Showcase submitShowcase(Showcase showcase) {
+//		sr.save(showcase);
+//		return showcase;
+//	}
+//
+//	public Set<Showcase> viewAllShowcases() {
+//		return new HashSet<Showcase>((Collection<? extends Showcase>) this.sr.findAll());
+//	}
+//	
+//	@Override
+//	public Set<Showcase> viewAllShowcases(Teacher teacher) {
+//		return sr.findByTeacher(teacher);
+//	}
 
 	public Set<Child> findAllChildren() {
 		Set<Child> children = new HashSet<Child>((Collection<? extends Child>) this.cr.findAll());
@@ -91,9 +91,9 @@ public class TeacherServiceImpl implements TeacherService {
 		return rr.findByChild(child);
 	}
 
-	@Override
-	public Set<Showcase> findShowcasesForChild(Child child) {
-		return sr.findByChild(child);
-	}
+//	@Override
+//	public Set<Showcase> findShowcasesForChild(Child child) {
+//		return sr.findByChild(child);
+//	}
 
 }

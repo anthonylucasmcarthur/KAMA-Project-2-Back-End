@@ -49,9 +49,9 @@ public class Child {
 //	@JsonIgnore
 	private Set<Report> reports = new HashSet<Report>();
 	
-	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
-//	@JsonIgnore
-	private Set<Showcase> showcases = new HashSet<Showcase>();
+//	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
+////	@JsonIgnore
+//	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 
 	public Child() {
@@ -98,13 +98,13 @@ public class Child {
 		this.reports = reports;
 	}
 
-	public Set<Showcase> getShowcases() {
-		return showcases;
-	}
-
-	public void setShowcases(Set<Showcase> showcases) {
-		this.showcases = showcases;
-	}
+//	public Set<Showcase> getShowcases() {
+//		return showcases;
+//	}
+//
+//	public void setShowcases(Set<Showcase> showcases) {
+//		this.showcases = showcases;
+//	}
 
 	@Override
 	public String toString() {
