@@ -41,11 +41,11 @@ public class Teacher {
 	private String lname;
 
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@JsonIgnore
 	private Set<Report> reports = new HashSet<Report>();
 	
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@JsonIgnore
 	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 	public Teacher() {

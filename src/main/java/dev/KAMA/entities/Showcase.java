@@ -36,12 +36,12 @@ public class Showcase {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "c_id")
-	@JsonIgnore
+//	@JsonIgnore
 	private Child child;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "t_id")
-	@JsonIgnore
+//	@JsonIgnore
 	private Teacher teacher;
 
 	public Showcase() {

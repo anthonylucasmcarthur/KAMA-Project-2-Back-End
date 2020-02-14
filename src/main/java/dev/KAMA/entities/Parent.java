@@ -41,7 +41,7 @@ public class Parent {
 	private String lname;
 
 	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@JsonIgnore
 	private Set<Child> children = new HashSet<Child>();
 	
 	

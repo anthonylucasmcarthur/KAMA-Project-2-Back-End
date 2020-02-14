@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "report")
-@JsonIgnoreProperties(value= {"child", "teacher"}, allowSetters=true)
+//@JsonIgnoreProperties(value= {"child", "teacher"}, allowSetters=true)
 public class Report {
 	
 	@Id

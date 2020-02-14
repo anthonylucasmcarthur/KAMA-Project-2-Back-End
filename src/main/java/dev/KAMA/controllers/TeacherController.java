@@ -45,7 +45,8 @@ public class TeacherController {
 	@ResponseBody
 	public Set<Report> getTeacherReports(@PathVariable int id) {
 		Teacher teacher = ts.getTeacherById(id);
-		return ts.viewAllReports(teacher);
+		Set<Report> reports = ts.viewAllReports(teacher);
+		return null;
 	}
 	
 	@RequestMapping(value = "/children", method = RequestMethod.GET)
@@ -59,9 +60,13 @@ public class TeacherController {
 	@CrossOrigin(origins = {"http://localhost:4200"})
 	@ResponseBody
 	public Report createReport(@RequestBody Report report){
-		System.out.println(report.getChild());
-		System.out.println(report.getTeacher());
-		return  ts.submitReport(report);
+		ts.submitReport(report);
+		report.getChild().setParent(null);
+		report.getChild().setReports(null);
+		report.getChild().setShowcases(null);
+		report.getTeacher().setReports(null);
+		report.getTeacher().setShowcases(null);
+		return  report;
 	}
 	
 	@RequestMapping(value = "/parent", method = RequestMethod.POST)
@@ -71,4 +76,5 @@ public class TeacherController {
 		Parent p = ps.loginParent(parent.getUsername(), parent.getPassword());
 		return p;
 	}
+	
 }
