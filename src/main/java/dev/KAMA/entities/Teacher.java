@@ -40,12 +40,10 @@ public class Teacher {
 	@Column(name = "lname")
 	private String lname;
 
-	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-//	@JsonIgnore
+	@OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
 	private Set<Report> reports = new HashSet<Report>();
 	
-	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-//	@JsonIgnore
+	@OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
 	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 	public Teacher() {

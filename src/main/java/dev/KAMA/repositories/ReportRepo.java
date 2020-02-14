@@ -11,7 +11,7 @@ import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Teacher;
 
 @Repository
-public interface ReportRepo extends CrudRepository<Report,Integer> {
+public interface ReportRepo extends CrudRepository<Report,Long> {
 
 	Report getRecordByDate(Date date);
 

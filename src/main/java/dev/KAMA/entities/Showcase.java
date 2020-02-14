@@ -34,14 +34,12 @@ public class Showcase {
 	@Column(name = "upload_date")
 	private long date = System.currentTimeMillis();
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "c_id")
-//	@JsonIgnore
 	private Child child;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "t_id")
-//	@JsonIgnore
 	private Teacher teacher;
 
 	public Showcase() {

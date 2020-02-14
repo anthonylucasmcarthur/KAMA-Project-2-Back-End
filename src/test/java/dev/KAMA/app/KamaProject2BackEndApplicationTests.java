@@ -1,5 +1,7 @@
 package dev.KAMA.app;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -49,9 +51,14 @@ class KamaProject2BackEndApplicationTests {
  // not working ... need help
  @Test
  void viewAllReports(){
- 
-  
-  System.out.println(ts.viewAllReports());
+	 Teacher teacher = ts.getTeacherById(2);
+	 System.out.println(teacher);
+	 Set<Report> reports = rr.findByTeacher(teacher);
+	 if(reports.isEmpty()) {
+	 System.out.println(reports);
+	 }else {
+		 System.out.println("Bum");
+	 }
  }
  // this works
  @Test

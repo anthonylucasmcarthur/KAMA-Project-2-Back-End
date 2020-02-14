@@ -28,53 +28,76 @@ public class TeacherController {
 
 	@Autowired
 	TeacherService ts;
-	
+
 	@Autowired
 	ParentService ps;
-		
+
 	@RequestMapping(value = "/teacher", method = RequestMethod.POST)
-	@CrossOrigin(origins = {"http://localhost:4200"})
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
 	public Teacher loginTeacher(@RequestBody Teacher teacher) {
-		Teacher t = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
-		return t;
+		teacher = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
+		teacher.setReports(null);
+//		teacher.setReports(reportSimplify(teacher.getReports()));
+		teacher.setShowcases(null);
+		return teacher;
 	}
-	
-	@RequestMapping(value = "/teacher/{id}", method = RequestMethod.POST)
-	@CrossOrigin(origins = {"http://localhost:4200"})
+
+	@RequestMapping(value = "/teacher/{id}", method = RequestMethod.GET)
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
 	public Set<Report> getTeacherReports(@PathVariable int id) {
 		Teacher teacher = ts.getTeacherById(id);
 		Set<Report> reports = ts.viewAllReports(teacher);
-		return null;
+		if (reports.isEmpty()) {
+			System.out.println(teacher.getReports());
+			System.out.println(reports);
+			reports = reportSimplify(reports);
+			System.out.println(reports);
+			return reports;
+		}else {
+			System.out.println("Null");
+			return null;
+		}
 	}
-	
+
 	@RequestMapping(value = "/children", method = RequestMethod.GET)
-	@CrossOrigin(origins = {"http://localhost:4200"})
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
-	public Set<Child> getChildren(){
+	public Set<Child> getChildren() {
 		return ts.findAllChildren();
 	}
-	
+
 	@RequestMapping(value = "/reports", method = RequestMethod.POST)
-	@CrossOrigin(origins = {"http://localhost:4200"})
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
-	public Report createReport(@RequestBody Report report){
+	public Report createReport(@RequestBody Report report) {
 		ts.submitReport(report);
 		report.getChild().setParent(null);
 		report.getChild().setReports(null);
 		report.getChild().setShowcases(null);
 		report.getTeacher().setReports(null);
 		report.getTeacher().setShowcases(null);
-		return  report;
+		return report;
 	}
-	
+
 	@RequestMapping(value = "/parent", method = RequestMethod.POST)
-	@CrossOrigin(origins = {"http://localhost:4200"})
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
 	public Parent loginParent(@RequestBody Parent parent) {
 		Parent p = ps.loginParent(parent.getUsername(), parent.getPassword());
 		return p;
 	}
-	
+
+	public static Set<Report> reportSimplify(Set<Report> reports) {
+		for (Report i : reports) {
+			System.out.println(i);
+			i.getChild().setParent(null);
+			i.getChild().setReports(null);
+			i.getChild().setShowcases(null);
+			i.setTeacher(null);
+			System.out.println(i);
+		}
+		return reports;
+	}
 }
