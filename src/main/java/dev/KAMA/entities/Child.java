@@ -26,7 +26,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name = "child")
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
 //property = "c_id")
-
 public class Child {
 
 	@Id
@@ -40,13 +39,13 @@ public class Child {
 	@Column(name = "lname")
 	private String lname;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "p_id")
 //	@JsonIgnore
 	private Parent parent;
 	
 
-	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
 //	@JsonIgnore
 	private Set<Report> reports = new HashSet<Report>();
 	
@@ -109,7 +108,7 @@ public class Child {
 
 	@Override
 	public String toString() {
-		return "Child [cId=" + cId + ", fname=" + fname + ", lname=" + lname + ", parent=" + parent + "]";
+		return "Child [cId=" + cId + ", fname=" + fname + ", lname=" + lname + "]";
 	}
 
 	

@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-
 import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Parent;
 import dev.KAMA.entities.Report;
@@ -51,26 +49,9 @@ public class TeacherController {
 	@ResponseBody
 	public Set<Report> getTeacherReports(@PathVariable int id) {
 		Teacher teacher = ts.getTeacherById(id);
-		Set<Report> reports = new HashSet<Report>();
-		reports = ts.viewAllReports(teacher);
+		Set<Report> reports = ts.viewAllReports(teacher);
 		System.out.println("HELLO" + reports);
-		
-		for (Report i : reports) {
-			System.out.println(i.getrId());
-			Report r = new Report();
-			r.setrId(i.getrId());
-			System.out.println(r);
-			Child c = ts.getChildByReport(r);
-//			System.out.println(c);
-//			System.out.println(reports);
-//			c.setFname(ts.getChildByReport(i).getFname());
-//			c.setLname("JAJA");
-//			System.out.println(c);
-//			c.setParent(null);
-//			c.setReports(null);
-			i.setChild(c);
-			i.setTeacher(new Teacher());
-		}
+		reports = fixReport(reports);
 		return reports;
 	}
 
@@ -78,7 +59,12 @@ public class TeacherController {
 	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
 	public Set<Child> getChildren() {
-		return ts.findAllChildren();
+		Set<Child> children = ts.findAllChildren();
+		for(Child child: children) {
+			child.setParent(null);
+			child.setReports(null);
+		}
+		return children;
 	}
 
 	@RequestMapping(value = "/reports", method = RequestMethod.POST)
@@ -100,4 +86,18 @@ public class TeacherController {
 		return p;
 	}
 
+	public Set<Report> fixReport(Set<Report> reports){
+		Child c = new Child();
+		Child newc = new Child();
+		for (Report i : reports) {
+			System.out.println(i);
+			c = ts.getChildByReport(i);
+			newc.setFname(c.getFname());
+			newc.setLname(c.getLname());
+			i.setChild(newc);
+			i.setTeacher(null);
+		}
+		return reports;
+	}
+	
 }

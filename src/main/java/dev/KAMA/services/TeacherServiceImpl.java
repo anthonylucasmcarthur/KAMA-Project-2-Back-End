@@ -82,7 +82,7 @@ public class TeacherServiceImpl implements TeacherService {
 //	}
 
 	public Set<Child> findAllChildren() {
-		Set<Child> children = new HashSet<Child>((Collection<? extends Child>) this.cr.findAll());
+		Set<Child> children = cr.findAll();
 		return children;
 	}
 

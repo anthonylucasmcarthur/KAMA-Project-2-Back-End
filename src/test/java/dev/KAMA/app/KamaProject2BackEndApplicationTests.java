@@ -1,5 +1,7 @@
 package dev.KAMA.app;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -51,11 +53,7 @@ class KamaProject2BackEndApplicationTests {
  // teacher
  @Test
  void findAllChild() {
-  Report r = new Report();
-  r.setrId(105);
-  System.out.println(r);
-  Child c = ts.getChildByReport(r);
-  System.out.println(c);
+	 Set<Child> children = cr.findAll();
  }
  // not working ... need help
  @Test
