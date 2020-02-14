@@ -43,8 +43,8 @@ public class Teacher {
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
 	private Set<Report> reports = new HashSet<Report>();
 	
-	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-	private Set<Showcase> showcases = new HashSet<Showcase>();
+//	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
+//	private Set<Showcase> showcases = new HashSet<Showcase>();
 	
 	public Teacher() {
 		super();
@@ -94,13 +94,13 @@ public class Teacher {
 		return reports;
 	}
 
-	public Set<Showcase> getShowcases() {
-		return showcases;
-	}
-
-	public void setShowcases(Set<Showcase> showcases) {
-		this.showcases = showcases;
-	}
+//	public Set<Showcase> getShowcases() {
+//		return showcases;
+//	}
+//
+//	public void setShowcases(Set<Showcase> showcases) {
+//		this.showcases = showcases;
+//	}
 
 	public void setReports(Set<Report> reports) {
 		this.reports = reports;

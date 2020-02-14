@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Parent;
 import dev.KAMA.entities.Report;
-import dev.KAMA.entities.Showcase;
+//import dev.KAMA.entities.Showcase;
 import dev.KAMA.repositories.ChildRepo;
 import dev.KAMA.repositories.ParentRepo;
 import dev.KAMA.repositories.ReportRepo;
-import dev.KAMA.repositories.ShowcaseRepo;
+//import dev.KAMA.repositories.ShowcaseRepo;
 import dev.KAMA.repositories.TeacherRepo;
 
 @Component
@@ -27,8 +27,8 @@ public class ParentServiceImpl implements ParentService {
 	@Autowired
 	ReportRepo rr;
 
-	@Autowired
-	ShowcaseRepo sr;
+//	@Autowired
+//	ShowcaseRepo sr;
 
 	@Autowired
 	TeacherRepo tr;
@@ -57,13 +57,13 @@ public class ParentServiceImpl implements ParentService {
 		return reports;
 	}
 
-	public Set<Showcase> viewShowcase(Parent parent) {
-		Set<Child> children = parent.getChildren();
-		Set<Showcase> showcases = new HashSet<Showcase>();
-		for (Child child : children) {
-			showcases.addAll(child.getShowcases());
-		}
-		return showcases;
-	}
+//	public Set<Showcase> viewShowcase(Parent parent) {
+//		Set<Child> children = parent.getChildren();
+//		Set<Showcase> showcases = new HashSet<Showcase>();
+//		for (Child child : children) {
+//			showcases.addAll(child.getShowcases());
+//		}
+//		return showcases;
+//	}
 
 }

@@ -39,9 +39,9 @@ public class TeacherController {
 	@ResponseBody
 	public Teacher loginTeacher(@RequestBody Teacher teacher) {
 		teacher = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
+		System.out.println(teacher);
 		teacher.setReports(null);
 //		teacher.setReports(reportSimplify(teacher.getReports()));
-		teacher.setShowcases(null);
 		return teacher;
 	}
 
@@ -77,9 +77,7 @@ public class TeacherController {
 		ts.submitReport(report);
 		report.getChild().setParent(null);
 		report.getChild().setReports(null);
-		report.getChild().setShowcases(null);
 		report.getTeacher().setReports(null);
-		report.getTeacher().setShowcases(null);
 		return report;
 	}
 
@@ -96,7 +94,6 @@ public class TeacherController {
 			System.out.println(i);
 			i.getChild().setParent(null);
 			i.getChild().setReports(null);
-			i.getChild().setShowcases(null);
 			i.setTeacher(null);
 			System.out.println(i);
 		}

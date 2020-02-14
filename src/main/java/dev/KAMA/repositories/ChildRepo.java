@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Report;
-import dev.KAMA.entities.Showcase;
+//import dev.KAMA.entities.Showcase;
 
 @Repository
 public interface ChildRepo extends CrudRepository<Child,Integer> {
