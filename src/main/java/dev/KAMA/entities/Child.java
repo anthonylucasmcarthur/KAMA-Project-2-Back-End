@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name = "child")
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
 //property = "c_id")
+
 public class Child {
 
 	@Id

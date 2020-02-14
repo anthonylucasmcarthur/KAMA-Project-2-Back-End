@@ -1,10 +1,12 @@
 package dev.KAMA.app;
 
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Report;
@@ -17,6 +19,7 @@ import dev.KAMA.repositories.TeacherRepo;
 import dev.KAMA.services.TeacherService;
 
 @SpringBootTest
+@Transactional
 class KamaProject2BackEndApplicationTests {
 
 	@Autowired
@@ -39,26 +42,34 @@ class KamaProject2BackEndApplicationTests {
 	
 	 @Test
  void contextLoads() {
-  System.out.println("Hello");
+  //System.out.println("Hello");
+  Teacher t = tr.findByUsername("jsmith");
+  System.out.println(t);
+  System.out.println(t.getReports());
  }
  // testing services
  // teacher
  @Test
- void findAllChild() {     
-  System.out.println(pr.findByUsername("ablack"));
-  System.out.println(ts.findAllChildren());
+ void findAllChild() {
+  Report r = new Report();
+  r.setrId(105);
+  System.out.println(r);
+  Child c = ts.getChildByReport(r);
+  System.out.println(c);
  }
  // not working ... need help
  @Test
  void viewAllReports(){
 	 Teacher teacher = ts.getTeacherById(2);
 	 System.out.println(teacher);
-	 Set<Report> reports = rr.findByTeacher(teacher);
-	 if(reports.isEmpty()) {
+	 System.out.println(teacher.getReports());
+	 Set<Report> reports = ts.viewAllReports(teacher);
 	 System.out.println(reports);
-	 }else {
-		 System.out.println("Bum");
-	 }
+//	 if(reports.isEmpty()) {
+//	 System.out.println(reports);
+//	 }else {
+//		 System.out.println("Bum");
+//	 }
  }
  // this works
 // @Test

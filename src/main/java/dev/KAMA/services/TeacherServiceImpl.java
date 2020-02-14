@@ -91,6 +91,16 @@ public class TeacherServiceImpl implements TeacherService {
 		return rr.findByChild(child);
 	}
 
+	@Override
+	public Child getChildByReport(Report report) {
+		return cr.findByReports(report);
+	}
+
+	@Override
+	public Report getReportById(int id) {
+		return rr.findByrId(id);
+	}
+
 //	@Override
 //	public Set<Showcase> findShowcasesForChild(Child child) {
 //		return sr.findByChild(child);

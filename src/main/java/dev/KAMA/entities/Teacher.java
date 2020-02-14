@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "teacher")
+
 public class Teacher {
 	
 	@Id
@@ -40,7 +41,7 @@ public class Teacher {
 	@Column(name = "lname")
 	private String lname;
 
-	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
 	private Set<Report> reports = new HashSet<Report>();
 	
 //	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
@@ -109,9 +110,10 @@ public class Teacher {
 	@Override
 	public String toString() {
 		return "Teacher [tId=" + tId + ", username=" + username + ", password=" + password + ", fname=" + fname
-				+ ", lname=" + lname + "]";
+				+ ", lname=" + lname + ", reports=" + reports + "]";
 	}
 
+	
 	
 
 	

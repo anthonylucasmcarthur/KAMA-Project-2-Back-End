@@ -13,6 +13,8 @@ import dev.KAMA.entities.Report;
 @Repository
 public interface ChildRepo extends CrudRepository<Child,Integer> {
 	
-	List<Child> findByReports(Report report);
+	//List<Child> findByReports(Report report);
+	
+	Child findByReports(Report reports);
 
 }

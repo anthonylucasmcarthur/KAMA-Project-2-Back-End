@@ -32,5 +32,9 @@ public interface TeacherService {
 	public Set<Report> findReportsForChild(Child child);
 	
 //	public Set<Showcase> findShowcasesForChild(Child child);
+	
+	public Child getChildByReport(Report report);
+	
+	public Report getReportById(int id);
 }
 

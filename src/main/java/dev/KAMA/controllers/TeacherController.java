@@ -1,5 +1,6 @@
 package dev.KAMA.controllers;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,17 +51,27 @@ public class TeacherController {
 	@ResponseBody
 	public Set<Report> getTeacherReports(@PathVariable int id) {
 		Teacher teacher = ts.getTeacherById(id);
-		Set<Report> reports = ts.viewAllReports(teacher);
-		if (reports.isEmpty()) {
-			System.out.println(teacher.getReports());
-			System.out.println(reports);
-			reports = reportSimplify(reports);
-			System.out.println(reports);
-			return reports;
-		}else {
-			System.out.println("Null");
-			return null;
+		Set<Report> reports = new HashSet<Report>();
+		reports = ts.viewAllReports(teacher);
+		System.out.println("HELLO" + reports);
+		
+		for (Report i : reports) {
+			System.out.println(i.getrId());
+			Report r = new Report();
+			r.setrId(i.getrId());
+			System.out.println(r);
+			Child c = ts.getChildByReport(r);
+//			System.out.println(c);
+//			System.out.println(reports);
+//			c.setFname(ts.getChildByReport(i).getFname());
+//			c.setLname("JAJA");
+//			System.out.println(c);
+//			c.setParent(null);
+//			c.setReports(null);
+			i.setChild(c);
+			i.setTeacher(new Teacher());
 		}
+		return reports;
 	}
 
 	@RequestMapping(value = "/children", method = RequestMethod.GET)
@@ -89,14 +100,4 @@ public class TeacherController {
 		return p;
 	}
 
-	public static Set<Report> reportSimplify(Set<Report> reports) {
-		for (Report i : reports) {
-			System.out.println(i);
-			i.getChild().setParent(null);
-			i.getChild().setReports(null);
-			i.setTeacher(null);
-			System.out.println(i);
-		}
-		return reports;
-	}
 }

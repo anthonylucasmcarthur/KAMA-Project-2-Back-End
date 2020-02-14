@@ -36,11 +36,11 @@ public class Report {
 	@Column(name = "report_date")
 	private long date = System.currentTimeMillis();
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "c_id")
 	private Child child;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "t_id")
 	private Teacher teacher;
 
@@ -98,8 +98,7 @@ public class Report {
 
 	@Override
 	public String toString() {
-		return "Report [rId=" + rId + ", status=" + status + ", comment=" + comment + ", date=" + date + ", child="
-				+ child + "]";
+		return "Report [rId=" + rId + ", status=" + status + ", comment=" + comment + ", date=" + date + "]";
 	}
 
 	
