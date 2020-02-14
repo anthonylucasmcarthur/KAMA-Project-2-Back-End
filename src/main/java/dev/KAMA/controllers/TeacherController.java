@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Parent;
 import dev.KAMA.entities.Report;
