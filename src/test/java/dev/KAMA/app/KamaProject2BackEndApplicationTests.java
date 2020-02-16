@@ -18,6 +18,7 @@ import dev.KAMA.repositories.ParentRepo;
 import dev.KAMA.repositories.ReportRepo;
 //import dev.KAMA.repositories.ShowcaseRepo;
 import dev.KAMA.repositories.TeacherRepo;
+import dev.KAMA.services.ParentService;
 import dev.KAMA.services.TeacherService;
 
 @SpringBootTest
@@ -42,12 +43,15 @@ class KamaProject2BackEndApplicationTests {
 	@Autowired
 	TeacherService ts;
 	
+	@Autowired
+	ParentService ps;
+	
 	 @Test
  void contextLoads() {
   //System.out.println("Hello");
-  Teacher t = tr.findByUsername("jsmith");
-  System.out.println(t);
-  System.out.println(t.getReports());
+  int id = 2;
+  Child c = ps.getChildById(id);
+  System.out.println(c);
  }
  // testing services
  // teacher

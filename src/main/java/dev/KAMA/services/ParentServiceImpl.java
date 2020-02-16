@@ -57,6 +57,11 @@ public class ParentServiceImpl implements ParentService {
 		return reports;
 	}
 
+	@Override
+	public Child getChildById(int id) {
+		return cr.findById(id).get();
+	}
+
 //	public Set<Showcase> viewShowcase(Parent parent) {
 //		Set<Child> children = parent.getChildren();
 //		Set<Showcase> showcases = new HashSet<Showcase>();

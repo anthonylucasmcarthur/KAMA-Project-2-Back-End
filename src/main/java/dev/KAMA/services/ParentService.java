@@ -12,5 +12,7 @@ public interface ParentService {
 	Parent loginParent(String username, String password);
 	Set<Report> viewReports(Parent parent);
 //	Set<Showcase> viewShowcase(Parent parent);
+	Child getChildById(int id);
+	
 	
 }
