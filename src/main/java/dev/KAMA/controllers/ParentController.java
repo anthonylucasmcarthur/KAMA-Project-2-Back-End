@@ -49,11 +49,10 @@ public class ParentController {
 		
 	}
 	
-	public Set<Report> fixReport(Set<Report> reports){
-		Teacher teacher = new Teacher();
+	public Set<Report> fixReport(Set<Report> reports){	
 		System.out.println(reports);
 		for (Report i : reports) {
-			System.out.println(i);
+			Teacher teacher = new Teacher();
 			Teacher newteach = ps.getTeacherByReport(i);
 			teacher.setFname(newteach.getFname());
 			teacher.setLname(newteach.getLname());
