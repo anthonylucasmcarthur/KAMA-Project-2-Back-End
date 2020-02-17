@@ -34,6 +34,7 @@ public class ParentController {
 	@ResponseBody
 	public Parent loginParent(@RequestBody Parent parent) {
 		Parent p = ps.loginParent(parent.getUsername(), parent.getPassword());
+		p.setChildren(fixChildren(p.getChildren()));
 		return p;
 	}
 	
@@ -60,5 +61,13 @@ public class ParentController {
 			i.setTeacher(teacher);
 		}
 		return reports;
+	}
+	
+	public Set<Child> fixChildren(Set<Child> children){
+		for(Child i : children) {
+			i.setParent(null);
+			i.setReports(null);
+		}
+		return children;
 	}
 }
