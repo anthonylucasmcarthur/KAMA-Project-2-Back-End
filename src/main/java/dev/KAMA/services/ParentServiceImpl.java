@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Parent;
 import dev.KAMA.entities.Report;
+import dev.KAMA.entities.Teacher;
 //import dev.KAMA.entities.Showcase;
 import dev.KAMA.repositories.ChildRepo;
 import dev.KAMA.repositories.ParentRepo;
@@ -60,6 +61,11 @@ public class ParentServiceImpl implements ParentService {
 	@Override
 	public Child getChildById(int id) {
 		return cr.findById(id).get();
+	}
+
+	@Override
+	public Teacher getTeacherByReport(Report report) {
+		return report.getTeacher();
 	}
 
 //	public Set<Showcase> viewShowcase(Parent parent) {
