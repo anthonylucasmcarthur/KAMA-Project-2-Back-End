@@ -28,7 +28,7 @@ import dev.KAMA.services.TeacherService;
 public class TeacherController {
 
 	@Autowired
-	TeacherService ts;
+	TeacherService ts; 
 
 	@Autowired
 	ParentService ps;
