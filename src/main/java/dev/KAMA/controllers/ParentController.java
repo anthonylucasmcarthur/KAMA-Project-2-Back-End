@@ -34,6 +34,8 @@ public class ParentController {
 	@ResponseBody
 	public Parent loginParent(@RequestBody Parent parent) {
 		Parent p = ps.loginParent(parent.getUsername(), parent.getPassword());
+		p.setPassword(null);
+		p.setUsername(null);
 		p.setChildren(fixChildren(p.getChildren()));
 		return p;
 	}

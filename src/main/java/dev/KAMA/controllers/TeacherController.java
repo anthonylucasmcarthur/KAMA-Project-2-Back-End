@@ -38,9 +38,9 @@ public class TeacherController {
 	@ResponseBody
 	public Teacher loginTeacher(@RequestBody Teacher teacher) {
 		teacher = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
-		System.out.println(teacher);
+		teacher.setPassword(null);
+		teacher.setUsername(null);
 		teacher.setReports(null);
-//		teacher.setReports(reportSimplify(teacher.getReports()));
 		return teacher;
 	}
 
@@ -79,9 +79,9 @@ public class TeacherController {
 	}
 
 	public Set<Report> fixReport(Set<Report> reports){
-		Child c = new Child();
-		Child newc = new Child();
 		for (Report i : reports) {
+			Child c = new Child();
+			Child newc = new Child();
 			System.out.println(i);
 			c = ts.getChildByReport(i);
 			newc.setFname(c.getFname());
