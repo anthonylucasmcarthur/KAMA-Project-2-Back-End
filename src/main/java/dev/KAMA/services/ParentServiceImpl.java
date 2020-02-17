@@ -65,7 +65,7 @@ public class ParentServiceImpl implements ParentService {
 
 	@Override
 	public Teacher getTeacherByReport(Report report) {
-		return report.getTeacher();
+		return tr.findByReports(report);
 	}
 
 //	public Set<Showcase> viewShowcase(Parent parent) {

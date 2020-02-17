@@ -47,7 +47,7 @@ public class TeacherController {
 	@RequestMapping(value = "/teacher/{id}", method = RequestMethod.GET)
 	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
-	public Set<Report> getTeacherReports(@PathVariable int id) {
+ 	public Set<Report> getTeacherReports(@PathVariable int id) {
 		Teacher teacher = ts.getTeacherById(id);
 		Set<Report> reports = ts.viewAllReports(teacher);
 		System.out.println("HELLO" + reports);
@@ -76,14 +76,6 @@ public class TeacherController {
 		report.getChild().setReports(null);
 		report.getTeacher().setReports(null);
 		return report;
-	}
-
-	@RequestMapping(value = "/parent", method = RequestMethod.POST)
-	@CrossOrigin(origins = { "http://localhost:4200" })
-	@ResponseBody
-	public Parent loginParent(@RequestBody Parent parent) {
-		Parent p = ps.loginParent(parent.getUsername(), parent.getPassword());
-		return p;
 	}
 
 	public Set<Report> fixReport(Set<Report> reports){

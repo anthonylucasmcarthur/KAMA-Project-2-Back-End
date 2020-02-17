@@ -110,7 +110,7 @@ public class Teacher {
 	@Override
 	public String toString() {
 		return "Teacher [tId=" + tId + ", username=" + username + ", password=" + password + ", fname=" + fname
-				+ ", lname=" + lname + ", reports=" + reports + "]";
+				+ ", lname=" + lname + "]";
 	}
 
 	

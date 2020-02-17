@@ -115,5 +115,16 @@ class KamaProject2BackEndApplicationTests {
 	void loginParent() {
 		System.out.println(pr.findByUsername("wwest"));
 	}
+	
+	@Test
+	void getTeacherByReport() {
+		Report r = rr.findByrId(106);
+		System.out.println(r);
+		System.out.println("hello");
+		Teacher teacher = tr.findByReports(r);
+		System.out.println("hello");
+		System.out.println(teacher);
+		System.out.println("hello");
+	}
 
 }
