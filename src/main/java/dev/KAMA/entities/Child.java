@@ -3,7 +3,6 @@ package dev.KAMA.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,17 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 @Entity
 @Table(name = "child")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-//property = "c_id")
 public class Child {
 
 	@Id
@@ -41,19 +31,12 @@ public class Child {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "p_id")
-//	@JsonIgnore
 	private Parent parent;
 	
 
 	@OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
-//	@JsonIgnore
 	private Set<Report> reports = new HashSet<Report>();
 	
-//	@OneToMany(mappedBy = "child", fetch = FetchType.EAGER)
-////	@JsonIgnore
-//	private Set<Showcase> showcases = new HashSet<Showcase>();
-	
-
 	public Child() {
 		super();
 	}
@@ -98,23 +81,9 @@ public class Child {
 		this.reports = reports;
 	}
 
-//	public Set<Showcase> getShowcases() {
-//		return showcases;
-//	}
-//
-//	public void setShowcases(Set<Showcase> showcases) {
-//		this.showcases = showcases;
-//	}
-
 	@Override
 	public String toString() {
 		return "Child [cId=" + cId + ", fname=" + fname + ", lname=" + lname + "]";
-	}
-
-	
-
-	
-	
-	
+	}	
 	
 }

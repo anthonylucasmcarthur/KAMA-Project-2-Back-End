@@ -1,15 +1,9 @@
 package dev.KAMA.repositories;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.Set;
 
-import javax.persistence.QueryHint;
-
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import dev.KAMA.entities.Child;
@@ -27,8 +21,6 @@ public interface ReportRepo extends CrudRepository<Report, Long> {
 
 	Set<Report> findByChild(Child child);
 	
-	//@Query("FROM Report WHERE t_id = teacher.tId") 
 	Set<Report> findByTeacher(Teacher teacher);
 
-	
 }

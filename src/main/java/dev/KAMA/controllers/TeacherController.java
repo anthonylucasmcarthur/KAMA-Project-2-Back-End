@@ -2,21 +2,17 @@ package dev.KAMA.controllers;
 
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dev.KAMA.entities.Child;
-import dev.KAMA.entities.Parent;
 import dev.KAMA.entities.Report;
 import dev.KAMA.entities.Teacher;
 import dev.KAMA.services.ParentService;
@@ -49,7 +45,6 @@ public class TeacherController {
  	public Set<Report> getTeacherReports(@PathVariable int id) {
 		Teacher teacher = ts.getTeacherById(id);
 		Set<Report> reports = ts.viewAllReports(teacher);
-		System.out.println("HELLO" + reports);
 		reports = fixReport(reports);
 		return reports;
 	}

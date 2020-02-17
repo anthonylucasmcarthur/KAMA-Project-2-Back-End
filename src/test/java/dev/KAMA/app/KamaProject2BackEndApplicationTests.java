@@ -1,8 +1,5 @@
 package dev.KAMA.app;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -16,7 +13,6 @@ import dev.KAMA.entities.Teacher;
 import dev.KAMA.repositories.ChildRepo;
 import dev.KAMA.repositories.ParentRepo;
 import dev.KAMA.repositories.ReportRepo;
-//import dev.KAMA.repositories.ShowcaseRepo;
 import dev.KAMA.repositories.TeacherRepo;
 import dev.KAMA.services.ParentService;
 import dev.KAMA.services.TeacherService;
@@ -34,9 +30,6 @@ class KamaProject2BackEndApplicationTests {
 	@Autowired
 	TeacherRepo tr;
 	
-//	@Autowired
-//	ShowcaseRepo sr;
-//	
 	@Autowired
 	ChildRepo cr;
 
@@ -58,6 +51,7 @@ class KamaProject2BackEndApplicationTests {
  @Test
  void findAllChild() {
 	 Set<Child> children = cr.findAll();
+	 System.out.println(children);
  }
  // not working ... need help
  @Test

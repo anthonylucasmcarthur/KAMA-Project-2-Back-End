@@ -4,7 +4,6 @@ package dev.KAMA.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import dev.KAMA.entities.Child;
 import dev.KAMA.entities.Parent;
 
 
@@ -12,6 +11,5 @@ import dev.KAMA.entities.Parent;
 public interface ParentRepo extends CrudRepository<Parent,Integer>  {
 	
 	Parent findByUsername(String username);
-	//Parent findByChildren(Child child);
 
 }
