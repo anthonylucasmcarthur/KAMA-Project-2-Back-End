@@ -69,6 +69,6 @@ public class ParentController {
 			i.setParent(null);
 			i.setReports(null);
 		}
-		return children;
+		return children; 
 	}
 }
