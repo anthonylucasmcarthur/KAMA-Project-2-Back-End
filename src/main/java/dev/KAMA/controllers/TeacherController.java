@@ -34,7 +34,7 @@ public class TeacherController {
 	public Teacher loginTeacher(@RequestBody Teacher teacher) {
 		if (ts.getTeacherByUsername(teacher.getUsername()) != null) {
 			if (ts.getTeacherByUsername(teacher.getUsername()).getPassword().equals(teacher.getPassword())) {
-				teacher = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
+				teacher = ts.getTeacherByUsername(teacher.getUsername());
 				teacher.setPassword(null);
 				teacher.setUsername(null);
 				teacher.setReports(null);

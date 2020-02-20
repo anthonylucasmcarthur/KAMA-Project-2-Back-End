@@ -8,7 +8,7 @@ import dev.KAMA.entities.Teacher;
 
 public interface TeacherService {
 
-	public Teacher loginTeacher(String username, String password);
+	public boolean loginTeacher(String username, String password);
 	
 	public Report submitReport(Report report);
 	

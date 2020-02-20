@@ -37,12 +37,12 @@ public class ParentServiceImpl implements ParentService {
 	@Autowired
 	ChildRepo cr;
 
-	public Parent loginParent(String username, String password) {
+	public boolean loginParent(String username, String password) {
 		Parent p = pr.findByUsername(username);
 		if (p.getPassword().equals(password)) {
-			return p;
+			return true;
 		}
-		return null;
+		return false;
 	}
 
 	public Set<Child> viewChildren(Parent parent) {

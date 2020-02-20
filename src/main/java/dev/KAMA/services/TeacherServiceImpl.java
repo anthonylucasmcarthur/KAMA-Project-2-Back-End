@@ -32,12 +32,12 @@ public class TeacherServiceImpl implements TeacherService {
 	@Autowired
 	ChildRepo cr;
 	
-	public Teacher loginTeacher(String username, String password) {
+	public boolean loginTeacher(String username, String password) {
 		Teacher t = tr.findByUsername(username);
 		if (t.getPassword().equals(password)) {
-			return t;
+			return true;
 		}
-		return null;
+		return false;
 	}
 	
 	public Teacher getTeacherById(int id) {

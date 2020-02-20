@@ -34,11 +34,12 @@ public class ParentController {
 	@ResponseBody
 	public Parent loginParent(@RequestBody Parent parent) {
 		if(ps.getParentByUsername(parent.getUsername()) != null) {
-			if(ps.getParentByUsername(parent.getUsername()).getPassword().equals(parent.getPassword())) {
-				parent = ps.loginParent(parent.getPassword(), parent.getPassword());
+			if(ps.loginParent(parent.getUsername(), parent.getPassword())) {
+				parent = ps.getParentByUsername(parent.getUsername());
 				parent.setChildren(null);
 				parent.setPassword(null);
 				parent.setUsername(null);
+				return parent;
 			}
 		}
 		return new Parent();
