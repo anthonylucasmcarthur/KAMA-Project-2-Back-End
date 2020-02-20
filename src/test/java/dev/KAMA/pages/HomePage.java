@@ -13,5 +13,9 @@ public class HomePage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	};
+	
+	@FindBy(id = "Location")
+	public WebElement seeReportsButton;
+	
 
 }
