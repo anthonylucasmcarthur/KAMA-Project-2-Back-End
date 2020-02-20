@@ -36,7 +36,7 @@ public class ParentController {
 		if(ps.getParentByUsername(parent.getUsername()) != null) {
 			if(ps.loginParent(parent.getUsername(), parent.getPassword())) {
 				parent = ps.getParentByUsername(parent.getUsername());
-				parent.setChildren(null);
+				parent.setChildren(fixChildren(parent.getChildren()));
 				parent.setPassword(null);
 				parent.setUsername(null);
 				return parent;
