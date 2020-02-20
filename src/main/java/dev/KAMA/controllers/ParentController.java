@@ -33,13 +33,17 @@ public class ParentController {
 	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
 	public Parent loginParent(@RequestBody Parent parent) {
-		Parent p = ps.loginParent(parent.getUsername(), parent.getPassword());
-		p.setPassword(null);
-		p.setUsername(null);
-		p.setChildren(fixChildren(p.getChildren()));
-		return p;
+		if(ps.getParentByUsername(parent.getUsername()) != null) {
+			if(ps.getParentByUsername(parent.getUsername()).getPassword().equals(parent.getPassword())) {
+				parent = ps.loginParent(parent.getPassword(), parent.getPassword());
+				parent.setChildren(null);
+				parent.setPassword(null);
+				parent.setUsername(null);
+			}
+		}
+		return new Parent();
 	}
-	
+
 	@RequestMapping(value = "/child/{id}", method = RequestMethod.GET)
 	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
@@ -48,10 +52,10 @@ public class ParentController {
 		child.setReports(fixReport(child.getReports()));
 		child.setParent(null);
 		return child;
-		
+
 	}
-	
-	public Set<Report> fixReport(Set<Report> reports){	
+
+	public Set<Report> fixReport(Set<Report> reports) {
 		System.out.println(reports);
 		for (Report i : reports) {
 			Teacher teacher = new Teacher();
@@ -63,12 +67,12 @@ public class ParentController {
 		}
 		return reports;
 	}
-	
-	public Set<Child> fixChildren(Set<Child> children){
-		for(Child i : children) {
+
+	public Set<Child> fixChildren(Set<Child> children) {
+		for (Child i : children) {
 			i.setParent(null);
 			i.setReports(null);
 		}
-		return children; 
+		return children;
 	}
 }

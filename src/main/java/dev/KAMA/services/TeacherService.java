@@ -25,5 +25,7 @@ public interface TeacherService {
 	public Child getChildByReport(Report report);
 	
 	public Report getReportById(int id);
+	
+	public Teacher getTeacherByUsername(String username);
 }
 

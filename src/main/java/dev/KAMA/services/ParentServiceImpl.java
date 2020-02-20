@@ -67,6 +67,10 @@ public class ParentServiceImpl implements ParentService {
 	public Teacher getTeacherByReport(Report report) {
 		return tr.findByReports(report);
 	}
+	
+	public Parent getParentByUsername(String username) {
+		return pr.findByUsername(username);
+	}
 
 //	public Set<Showcase> viewShowcase(Parent parent) {
 //		Set<Child> children = parent.getChildren();

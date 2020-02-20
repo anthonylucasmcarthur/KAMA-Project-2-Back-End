@@ -77,5 +77,10 @@ public class TeacherServiceImpl implements TeacherService {
 	public Report getReportById(int id) {
 		return rr.findByrId(id);
 	}
+	
+	public Teacher getTeacherByUsername(String username) {
+		Teacher teacher = tr.findByUsername(username);
+		return teacher;
+	}
 
 }

@@ -15,6 +15,7 @@ public interface ParentService {
 //	Set<Showcase> viewShowcase(Parent parent);
 	Child getChildById(int id);
 	Teacher getTeacherByReport(Report report);
+	public Parent getParentByUsername(String username);
 	
 	
 }

@@ -32,17 +32,22 @@ public class TeacherController {
 	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
 	public Teacher loginTeacher(@RequestBody Teacher teacher) {
-		teacher = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
-		teacher.setPassword(null);
-		teacher.setUsername(null);
-		teacher.setReports(null);
-		return teacher;
+		if (ts.getTeacherByUsername(teacher.getUsername()) != null) {
+			if (ts.getTeacherByUsername(teacher.getUsername()).getPassword().equals(teacher.getPassword())) {
+				teacher = ts.loginTeacher(teacher.getUsername(), teacher.getPassword());
+				teacher.setPassword(null);
+				teacher.setUsername(null);
+				teacher.setReports(null);
+				return teacher;
+			}
+		}
+		return new Teacher();
 	}
 
 	@RequestMapping(value = "/teacher/{id}", method = RequestMethod.GET)
 	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
- 	public Set<Report> getTeacherReports(@PathVariable int id) {
+	public Set<Report> getTeacherReports(@PathVariable int id) {
 		Teacher teacher = ts.getTeacherById(id);
 		Set<Report> reports = ts.viewAllReports(teacher);
 		reports = fixReport(reports);
@@ -54,7 +59,7 @@ public class TeacherController {
 	@ResponseBody
 	public Set<Child> getChildren() {
 		Set<Child> children = ts.findAllChildren();
-		for(Child child: children) {
+		for (Child child : children) {
 			child.setParent(null);
 			child.setReports(null);
 		}
@@ -72,7 +77,7 @@ public class TeacherController {
 		return report;
 	}
 
-	public Set<Report> fixReport(Set<Report> reports){
+	public Set<Report> fixReport(Set<Report> reports) {
 		for (Report i : reports) {
 			Child c = new Child();
 			Child newc = new Child();
@@ -85,5 +90,5 @@ public class TeacherController {
 		}
 		return reports;
 	}
-	
+
 }
