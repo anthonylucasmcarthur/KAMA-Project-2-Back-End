@@ -29,7 +29,7 @@ public class TeacherController {
 	ParentService ps;
 
 	@RequestMapping(value = "/teacher", method = RequestMethod.POST)
-	@CrossOrigin(origins = { "http://localhost:4200" })
+	@CrossOrigin(origins = { "http://localhost:4200", "http://progressreport.com.s3-website.us-east-2.amazonaws.com/" })
 	@ResponseBody
 	public Teacher loginTeacher(@RequestBody Teacher teacher) {
 		if (ts.getTeacherByUsername(teacher.getUsername()) != null) {
@@ -45,7 +45,7 @@ public class TeacherController {
 	}
 
 	@RequestMapping(value = "/teacher/{id}", method = RequestMethod.GET)
-	@CrossOrigin(origins = { "http://localhost:4200" })
+	@CrossOrigin(origins = { "http://localhost:4200", "http://progressreport.com.s3-website.us-east-2.amazonaws.com/" })
 	@ResponseBody
 	public Set<Report> getTeacherReports(@PathVariable int id) {
 		Teacher teacher = ts.getTeacherById(id);
@@ -55,7 +55,7 @@ public class TeacherController {
 	}
 
 	@RequestMapping(value = "/children", method = RequestMethod.GET)
-	@CrossOrigin(origins = { "http://localhost:4200" })
+	@CrossOrigin(origins = { "http://localhost:4200", "http://progressreport.com.s3-website.us-east-2.amazonaws.com/" })
 	@ResponseBody
 	public Set<Child> getChildren() {
 		Set<Child> children = ts.findAllChildren();
@@ -67,7 +67,7 @@ public class TeacherController {
 	}
 
 	@RequestMapping(value = "/reports", method = RequestMethod.POST)
-	@CrossOrigin(origins = { "http://localhost:4200" })
+	@CrossOrigin(origins = { "http://localhost:4200", "http://progressreport.com.s3-website.us-east-2.amazonaws.com/" })
 	@ResponseBody
 	public Report createReport(@RequestBody Report report) {
 		ts.submitReport(report);
