@@ -30,7 +30,7 @@ public class ParentController {
 	ParentService ps;
 	
 	@RequestMapping(value = "/parent", method = RequestMethod.POST)
-	@CrossOrigin(origins = { "http://progressreport.com.s3-website.us-east-2.amazonaws.com/" })
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
 	public Parent loginParent(@RequestBody Parent parent) {
 		if(ps.getParentByUsername(parent.getUsername()) != null) {
@@ -46,7 +46,7 @@ public class ParentController {
 	}
 
 	@RequestMapping(value = "/child/{id}", method = RequestMethod.GET)
-	@CrossOrigin(origins = { "http://progressreport.com.s3-website.us-east-2.amazonaws.com/" })
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@ResponseBody
 	public Child getChild(@PathVariable int id) {
 		Child child = ps.getChildById(id);
